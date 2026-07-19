@@ -4,6 +4,8 @@ Council is a Chrome extension for sending one task to multiple AI websites and f
 
 Council does not require API keys, a backend, or a separate account. Provider interaction happens through visible page elements in normal Chrome tabs.
 
+![Council workspace showing the task composer, provider connections, and council modes](./screenshot.png)
+
 ## Status
 
 Council is under active development. The current build includes:
@@ -31,6 +33,8 @@ Peer review, revision, final synthesis execution, history management, and export
 ## Install from source
 
 ```bash
+git clone https://github.com/RaheesAhmed/Council.git
+cd Council
 npm install
 npm run build
 ```
@@ -100,4 +104,6 @@ Open an issue before making a large change. Keep provider-specific behavior insi
 
 ## License
 
-[MIT](LICENSE)
+Council is open-source software licensed under the [MIT License](LICENSE).
+
+Copyright © 2026 Rahees Ahmed.
