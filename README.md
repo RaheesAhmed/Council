@@ -1,6 +1,6 @@
 # Council
 
-Council is a Chrome extension for sending one task to multiple AI websites and viewing their responses in one workspace. It uses the browser sessions you already have open for ChatGPT, Claude, Gemini, Grok, and Kimi.
+Council is a Chrome extension for sending one task to multiple AI websites and following their responses in one workspace. It uses the browser sessions you already have open for ChatGPT, Claude, Gemini, Grok, and Kimi.
 
 Council does not require API keys, a backend, or a separate account. Provider interaction happens through visible page elements in normal Chrome tabs.
 
@@ -14,8 +14,11 @@ Council is under active development. The current build includes:
 - ChatGPT, Claude, Gemini, Grok, and Kimi adapters
 - Prompt submission through visible page controls
 - Live response updates using `MutationObserver`
+- Full-height live room with one response lane per provider
+- Direct shortcuts from each response lane to the provider tab
+- Compact side-panel session monitor
 - Local run state and IndexedDB persistence
-- Connection diagnostics and provider-tab shortcuts
+- Connection diagnostics with matched selectors and recovery details
 
 Peer review, revision, final synthesis execution, history management, and exports are not complete yet.
 
@@ -28,8 +31,6 @@ Peer review, revision, final synthesis execution, history management, and export
 ## Install from source
 
 ```bash
-git clone https://github.com/RaheesAhmed/Council.git
-cd Council
 npm install
 npm run build
 ```
@@ -65,7 +66,7 @@ flowchart LR
   UI --> Storage[(Local browser storage)]
 ```
 
-The service worker finds or opens provider tabs. A provider-specific content script fills the visible composer, submits the prompt, and observes the latest assistant message. Typed runtime messages carry response updates back to the Council interface.
+The service worker finds or opens provider tabs. A provider-specific content script fills the visible composer, submits the prompt, and observes the latest assistant message. Typed runtime messages stream response updates into separate provider lanes in the live room.
 
 Provider adapters and selectors are isolated under `src/content/providers`. Shared DOM interaction code is under `src/content/shared`.
 
